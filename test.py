@@ -15,7 +15,7 @@ def main(stdscr):
     # stdscr.addstr(10, 10, "Hello", curses.A_BOLD)
 
     begin_x = 0; begin_y = 0
-    height = 5; width = 20
+    height = 15; width = 35
     win = curses.newwin(height, width, begin_y, begin_x)
 
     options = ["Hello", "World", "Type shit"]
@@ -40,7 +40,26 @@ def main(stdscr):
         inp = stdscr.getch()
         if inp == ord('q'):
             break
-        else:
+        elif inp == ord('g'):
+            stdscr.refresh()
+
+            win.bkgd(curses.COLOR_BLACK)
+
+            win.clear()
+            win.erase()
+
+            win.addstr(0,0,"      _.-'''''-._", RIB)
+            win.addstr(1,0,"    .'  _     _  '.", RIB)
+            win.addstr(2,0,"   /   (_)   (_)   \\", RIB)
+            win.addstr(3,0,"  |  ,           ,  |", RIB)
+            win.addstr(4,0,"  |  \\`.       .`/  |", RIB)
+            win.addstr(5,0,"   \\  '.`'\"\"'\"`.'  /", RIB)
+            win.addstr(6,0,"    '.  `'---'`  .'", RIB)
+            win.addstr(7,0,"jgs   '-._____.-'", RIB)
+
+            win.refresh()
+
+        elif inp == ord('j') or inp == curses.KEY_DOWN or inp == ord('k') or inp == curses.KEY_UP:
             if inp == ord('j') or inp == curses.KEY_DOWN:
                 if select_index < len(options) - 1:
                     select_index += 1
